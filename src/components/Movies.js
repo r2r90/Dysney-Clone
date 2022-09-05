@@ -1,35 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import {selectMovies} from '../features/movie/movieSlice';
+import {useSelector} from 'react-redux'
 
 function Movies() {
+const movies = useSelector(selectMovies)
+
+
+
   return (
     <Container>
       <h4>Recomended for you</h4>
       <Content>
-        <Wrap>
-          <img src="https://i2.wp.com/www.bubbleblabber.com/wp-content/uploads/2019/10/simps.jpg?fit=3840%2C2160&ssl=1" />
-        </Wrap>
-        <Wrap>
-          <img src="https://i2.wp.com/www.bubbleblabber.com/wp-content/uploads/2019/10/simps.jpg?fit=3840%2C2160&ssl=1" />
-        </Wrap>
-        <Wrap>
-          <img src="https://i2.wp.com/www.bubbleblabber.com/wp-content/uploads/2019/10/simps.jpg?fit=3840%2C2160&ssl=1" />
-        </Wrap>
-        <Wrap>
-          <img src="https://i2.wp.com/www.bubbleblabber.com/wp-content/uploads/2019/10/simps.jpg?fit=3840%2C2160&ssl=1" />
-        </Wrap>
-        <Wrap>
-          <img src="https://i2.wp.com/www.bubbleblabber.com/wp-content/uploads/2019/10/simps.jpg?fit=3840%2C2160&ssl=1" />
-        </Wrap>
-        <Wrap>
-          <img src="https://i2.wp.com/www.bubbleblabber.com/wp-content/uploads/2019/10/simps.jpg?fit=3840%2C2160&ssl=1" />
-        </Wrap>
-        <Wrap>
-          <img src="https://i2.wp.com/www.bubbleblabber.com/wp-content/uploads/2019/10/simps.jpg?fit=3840%2C2160&ssl=1" />
-        </Wrap>
-        <Wrap>
-          <img src="https://i2.wp.com/www.bubbleblabber.com/wp-content/uploads/2019/10/simps.jpg?fit=3840%2C2160&ssl=1" />
-        </Wrap>
+    { movies && 
+    movies.map((movie) => (<Wrap key={movie.id}>
+      <img  src= {movie.CardImg} alt='affiche' />
+    </Wrap>)
+      
+    )}
+
+       
       </Content>
     </Container>
   );
