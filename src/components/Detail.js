@@ -1,18 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import db from '../firabase';
+import { doc, getDoc } from 'firebase/firestore';
 
 function Detail() {
+  const { id } = useParams();
+  const [movie, setMovie] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      const docRef = doc(db, 'Movies', id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setMovie(docSnap.data())
+        // console.log(docSnap.data());
+      }else {
+        console.log('data error');
+      }
+    })();
+   
+    
+  }, []);
+
+  console.log(movie);
+
   return (
     <Container>
       <BackGround>
         <img
-          src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4F39B7E16726ECF419DD7C49E011DD95099AA20A962B0B10AA1881A70661CE45/scale?width=1440&aspectRatio=1.78&format=jpeg"
+          src={movie.BackgroundImg}
           alt=""
         />
       </BackGround>
       <ImageTitle>
         <img
-          src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D7AEE1F05D10FC37C873176AAA26F777FC1B71E7A6563F36C6B1B497CAB1CEC2/scale?width=1440&aspectRatio=1.78"
+          src={movie.TitleImg}
           alt=""
         />
       </ImageTitle>
@@ -32,11 +55,9 @@ function Detail() {
           <img src="/images/group-icon.png" alt="" />
         </GroupWatchButton>
       </Controls>
-      <SubTitle>2018 • 7m • Family, Fantasy, Kids, Animation</SubTitle>
+      <SubTitle>{movie.Genres}</SubTitle>
       <Description>
-        A Chinese mom who’s sad when her grown son leaves home gets another chance at motherhood
-        when one of her dumplings springs to life. But she finds that nothing stays cute and small
-        forever.
+        {movie.Description}
       </Description>
     </Container>
   );
@@ -70,7 +91,7 @@ const ImageTitle = styled.div`
   min-height: 170px;
   width: 35vw;
   min-width: 200px;
-  margin-top: 100px;
+  margin: 100px 0 50px 0;
 
   img {
     width: 100%;
@@ -139,7 +160,7 @@ const SubTitle = styled.div`
 `;
 
 const Description = styled.div`
-max-width: 60%;
+  max-width: 60%;
   line-height: 1.4;
   font-size: 20px;
   margin-top: 16px;

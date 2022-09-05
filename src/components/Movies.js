@@ -1,25 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import {selectMovies} from '../features/movie/movieSlice';
-import {useSelector} from 'react-redux'
-
+import { Link } from 'react-router-dom';
+import { selectMovies } from '../features/movie/movieSlice';
+import { useSelector } from 'react-redux';
 function Movies() {
-const movies = useSelector(selectMovies)
-
-
+  const movies = useSelector(selectMovies);
 
   return (
     <Container>
       <h4>Recomended for you</h4>
       <Content>
-    { movies && 
-    movies.map((movie) => (<Wrap key={movie.id}>
-      <img  src= {movie.CardImg} alt='affiche' />
-    </Wrap>)
-      
-    )}
-
-       
+        {movies &&
+          movies.map((movie) => (
+            <Wrap key={movie.id}>
+              <Link to={`/detail/${movie.id}`}>
+                <img src={movie.CardImg} alt="affiche" />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );
