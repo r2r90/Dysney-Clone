@@ -1,3 +1,51 @@
+Disney+ Clone with ReactJS
+A Disney+ Clone that you can sign in with your Google Account.
+
+Disney+ Clone Demo Link
+You can view the site here Click Me
+
+Topics
+Redux
+React Hooks
+Flexbox
+Firebase's Database
+Firebase Google Authentication (Full Login)
+Responsive Design
+Deploy the App LIVE on Firebase
+
+
+
+
+![disney-1](https://user-images.githubusercontent.com/97596287/189896570-801c1501-9408-4599-ab98-d40c3fa05cd6.png)
+
+
+
+
+
+![disney](https://user-images.githubusercontent.com/97596287/189896646-a3551c7e-e80e-450f-8273-19230fbaf714.png)
+
+
+
+
+![disney-2](https://user-images.githubusercontent.com/97596287/189896659-dbdd2225-8cdc-4b36-b0e0-55c729d7560e.png)
+
+
+
+![disney-3](https://user-images.githubusercontent.com/97596287/189896675-a07cdfe5-bda7-4fee-99f3-cef88a2b10f5.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
